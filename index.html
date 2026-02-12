@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#ff2e63;
+  --accent:#ff6b81;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(135deg,#d016ca,#bc5252,#3c6d6d);
+  background-size:400% 400%;
+  animation:gradientBG 8s ease infinite;
+  color:#fff;
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Sparkles */
+#sparkles span{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px white,0 0 20px #ff6b81;
+  animation:sparkleMove linear infinite;
+}
+@keyframes sparkleMove{
+  from{transform:translateY(100vh) scale(0);opacity:0;}
+  50%{opacity:1;}
+  to{transform:translateY(-10vh) scale(1);opacity:0;}
+}
+
+/* Sections */
+section{
+  min-height:100vh;
+  padding:100px 10%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  opacity:0;
+  transform:translateY(80px) scale(.95);
+  transition:all 1.3s cubic-bezier(0.22,1,0.36,1);
+}
+section.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+h1,h2{font-family:'Playfair Display',serif;}
+
+#typewriter{
+  font-size:3rem;
+  text-shadow:0 0 10px #fff,0 0 20px #ff6b81;
+  animation:glowPulse 2s ease-in-out infinite alternate;
+}
+@keyframes glowPulse{
+  from{text-shadow:0 0 10px #fff,0 0 20px #ff6b81;}
+  to{text-shadow:0 0 20px #fff,0 0 40px #ff2e63,0 0 60px #ff6b81;}
+}
+
+/* Glass */
+.glass{
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(15px);
+  padding:40px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.3);
+}
+
+/* Buttons */
+.btn{
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:16px;
+  transition:.3s;
+}
+.yes{
+  background:linear-gradient(45deg,#ff2e63,#ff6b81);
+  color:white;
+}
+.no{
+  background:#444;
+  color:white;
+}
+
+/* Timeline Image */
+.timeline img{
+  width:100%;
+  border-radius:15px;
+  margin-top:20px;
+  transition:transform .8s ease, box-shadow .8s ease;
+}
+.timeline img:hover{
+  transform:scale(1.05);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+/* Password Gate */
+#passwordGate{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(to right top,#c86bd1,#b87add,#a987e4,#9a93e9,#8f9dea,#80a9f2,#73b4f6,#69bff8,#52cffe,#41dfff,#46eefa,#5ffbf1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.password-box{
+  text-align:center;
+  width:320px;
+}
+.password-box input{
+  margin:20px 0;
+  padding:12px;
+  width:100%;
+  border-radius:10px;
+  border:none;
+}
+
+/* Question Box */
+#questionBox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:2000;
+}
+.button-row{
+  margin-top:20px;
+  display:flex;
+  gap:25px;
+}
+
+/* Final Love Page */
+#lovePage{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+  z-index:3000;
+  background:linear-gradient(45deg,#e10101,#ff4da6,#ff9a9e,#019ae1);
+  background-size:200% 200%;
+  animation:gradientBG 6s ease infinite;
+}
+#lovePage h1{
+  font-size:3rem;
+}
+</style>
+</head>
+
+<body>
+
+<div id="sparkles"></div>
+
+<!-- Password -->
+<div id="passwordGate">
+  <div class="glass password-box">
+    <h2>Only My Wife Can Enter ❤️</h2>
+    <input type="password" id="passwordInput" placeholder="Enter our secret word">
+    <button class="btn yes" onclick="checkPassword()">Enter</button>
+  </div>
+</div>
+
+<section>
+  <h1 id="typewriter"></h1>
+  <p>You are my always and forever. Every heartbeat belongs to you.</p>
+</section>
+
+<section class="timeline">
+  <div class="glass">
+    <h3>MY LOVE 😘 ❤️</h3>
+    <p>You are my today and all my tommorrows.</p>
+    <img src="https://drive.google.com/thumbnail?id=1paXx9eK1KsLAv_E7PL-drWI8TevemUdG&sz=w1000" alt="Our Memory">
+  </div>
+</section>
+
+<section>
+  <div class="glass">
+    <h2>My Private Letter</h2>
+    <p id="loveLetter" style="white-space:pre-line;"></p>
+  </div>
+</section>
+
+<section>
+  <h2>Forever With You ❤️</h2>
+  <p>I choose you. Every single day. In every lifetime.</p>
+</section>
+
+<!-- Question -->
+<div id="questionBox">
+  <h2>Do you Wanna be his Valentine? 💘</h2>
+  <div class="button-row">
+    <button class="btn yes" onclick="showLovePage()">YES 😘</button>
+    <button class="btn no" id="noBtn">NO 😜</button>
+  </div>
+</div>
+
+<!-- Final Page -->
+<div id="lovePage">
+  <div>
+    <h1>You Said YES 💖</h1>
+    <p style="max-width:600px;margin:20px auto;font-size:18px;">
+      From today until eternity, every sunrise will carry your smile,
+      every heartbeat will whisper your name.
+      You are my forever, my peace, my universe.
+    </p>
+  </div>
+</div>
+
+<script>
+function checkPassword(){
+  if(document.getElementById("passwordInput").value==="betu"){
+    document.getElementById("passwordGate").style.display="none";
+  }
+}
+
+/* Typewriter */
+const text="Happy Valentine’s Day, My Love ❤️";
+let i=0;
+function typeWriter(){
+  if(i<text.length){
+    document.getElementById("typewriter").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeWriter,60);
+  }
+}
+typeWriter();
+
+/* Love Letter */
+document.getElementById("loveLetter").innerText=
+`My Love,
+
+Every moment with you feels written by destiny.
+You are my greatest blessing.
+I promise to love you endlessly.
+
+Forever yours ❤️`;
+
+/* Scroll Animation */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll("section").forEach(sec=>{
+  observer.observe(sec);
+});
+
+/* Show Question at Bottom */
+let questionShown=false;
+window.addEventListener("scroll",()=>{
+  if(window.innerHeight+window.scrollY>=document.body.offsetHeight-5){
+    if(!questionShown){
+      questionShown=true;
+      setTimeout(()=>{
+        document.getElementById("questionBox").style.display="flex";
+      },800);
+    }
+  }
+});
+
+/* Moving NO Button */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.position="fixed";
+  noBtn.style.left=Math.random()*(window.innerWidth-120)+"px";
+  noBtn.style.top=Math.random()*(window.innerHeight-60)+"px";
+});
+
+/* Show Love Page */
+function showLovePage(){
+  document.getElementById("questionBox").style.display="none";
+  document.getElementById("lovePage").style.display="flex";
+}
+
+/* Sparkles */
+function createSparkle(){
+  const sparkle=document.createElement("span");
+  sparkle.style.left=Math.random()*window.innerWidth+"px";
+  sparkle.style.animationDuration=(3+Math.random()*5)+"s";
+  document.getElementById("sparkles").appendChild(sparkle);
+  setTimeout(()=>{sparkle.remove();},8000);
+}
+setInterval(createSparkle,200);
+</script>
+
+</body>
+</html>
